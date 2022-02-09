@@ -14,14 +14,12 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		err := json.NewDecoder(r.Body).Decode(&lr)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte(err.Error()))
 			return
 		}
 
 		jwt, err := Login(lr.Username, lr.Password)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte(err.Error()))
 		} else {
 			json.NewEncoder(w).Encode(jwt)
 		}
@@ -58,7 +56,6 @@ func LogoutHandler(w http.ResponseWriter, r *http.Request) {
 		err := Logout(sub.(string))
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(err.Error()))
 		}
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
@@ -73,14 +70,12 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 		err := json.NewDecoder(r.Body).Decode(&sr)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte(err.Error()))
 			return
 		}
 
 		err = Signup(sr.Username, sr.Password)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(err.Error()))
 			return
 		}
 
