@@ -12,8 +12,8 @@ import (
 	"tripleoak/auth-api/services"
 
 	"github.com/google/uuid"
-	"github.com/lestrrat/go-jwx/jwa"
-	"github.com/lestrrat/go-jwx/jwt"
+	"github.com/lestrrat-go/jwx/v2/jwa"
+	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
 func GenerateJWT(email string) (string, error) {
@@ -43,7 +43,7 @@ func GenerateJWT(email string) (string, error) {
 		return "", err
 	}
 
-	tokenString, err := token.Sign(jwa.RS512, key)
+	tokenString, err := jwt.Sign(token, jwt.WithKey(jwa.RS512, key))
 	if err != nil {
 		return "", err
 	}
@@ -51,7 +51,7 @@ func GenerateJWT(email string) (string, error) {
 	return string(tokenString), nil
 }
 
-func VerifyJWT(tokenString string) (*jwt.Token, error) {
+func VerifyJWT(tokenString string) (jwt.Token, error) {
 	token, err := jwt.ParseString(tokenString)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func VerifyJWT(tokenString string) (*jwt.Token, error) {
 		return nil, err
 	}
 
-	token, err = jwt.ParseString(tokenString, jwt.WithVerify(jwa.RS512, &privKey.PublicKey))
+	token, err = jwt.ParseString(tokenString, jwt.WithKey(jwa.RS512, &privKey.PublicKey))
 	if err != nil {
 		return nil, err
 	}

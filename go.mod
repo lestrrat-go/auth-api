@@ -5,17 +5,22 @@ go 1.17
 require (
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
-	github.com/lestrrat/go-jwx v0.9.1
+	github.com/lestrrat-go/jwx/v2 v2.0.1
 	go.mongodb.org/mongo-driver v1.8.3
-	golang.org/x/crypto v0.0.0-20220209195652-db638375bc3a
+	golang.org/x/crypto v0.0.0-20220427172511-eb4f295cb31f
 )
 
 require (
-	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/go-stack/stack v1.8.1 // indirect
+	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.14.2 // indirect
-	github.com/lestrrat/go-pdebug v0.0.0-20180220043741-569c97477ae8 // indirect
+	github.com/lestrrat-go/blackmagic v1.0.1 // indirect
+	github.com/lestrrat-go/httpcc v1.0.1 // indirect
+	github.com/lestrrat-go/httprc v1.0.1 // indirect
+	github.com/lestrrat-go/iter v1.0.2 // indirect
+	github.com/lestrrat-go/option v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.0 // indirect
